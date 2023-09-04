@@ -12,7 +12,7 @@ const images = await Astro.glob("/src/assets/images/galleri/*").then(files => {
 ---
 <BaseLayout title="Forside">
 	<main>
-		<h1>Københavnerbilleder</h1>
+		<h1 class="gsaptest">Københavnerbilleder</h1>
 		<section class="herocontainer">
 			<div class="herocontent">
 				<div class="venstre">
@@ -34,12 +34,12 @@ const images = await Astro.glob("/src/assets/images/galleri/*").then(files => {
 			<article class="quickfacts">
 				<h2>Quickfacts om bogen</h2>
 				<ul>
-					<li>Titel: Københavnerbilleder - en guide til hipster foto</li>
-					<li>Forfatter: Sten Simons</li>
-					<li>Antal sider: 344</li>
-					<li>Forlag: Mellem Linjerne</li>
-					<li>ISBN: 987-6-987654-32-1</li>
-					<li>Pris: 399.-</li>
+					<li class="li-1">Titel: Københavnerbilleder - en guide til hipster foto</li>
+					<li class="li-2">Forfatter: Sten Simons</li>
+					<li class="li-3">Antal sider: 344</li>
+					<li class="li-4">Forlag: Mellem Linjerne</li>
+					<li class="li-5">ISBN: 987-6-987654-32-1</li>
+					<li class="li-6">Pris: 399.-</li>
 				</ul>
 			</article>
 		</section>
@@ -111,7 +111,7 @@ const images = await Astro.glob("/src/assets/images/galleri/*").then(files => {
 
 		<section class="forfatteren">
 			<div>
-				<Image src={bogforfatter} alt="Sten Simons - forfatter, Københavnerbilleder" class="" />
+				<Image src={bogforfatter} alt="Sten Simons - forfatter, Københavnerbilleder" class="flicker-1 forfatterfoto" />
 			</div>
 			<article>
 				<h2>Forfatteren</h2>
@@ -263,5 +263,37 @@ const images = await Astro.glob("/src/assets/images/galleri/*").then(files => {
 .galleri img{
 	margin-bottom: var(--size-3);
 }
+
+ img:hover{
+    animation: color-change-4x 6s linear infinite alternate both;
+}
+
 </style>
+<script>
+	import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".gsaptest", {
+	color:"#ff9900",
+	duration: 5
+});
+
+gsap.from(".forfatterfoto",{
+	x:-500,
+	duration:5,
+	scrollTrigger: ".forfatterfoto"
+})
+gsap.to(".galleri", {
+	scrollTrigger:{
+		trigger:".galleri",
+		start:'center center',
+		toggleClass:"jello-vertical"
+	}
+})
+</script>
+
+
+
 	

@@ -6,23 +6,31 @@ main{
 }
 
 /*Typografi */
-h1, h2, h3{
+/* h1, */ h2, h3{
     font-family: var(--font-serif);
+  /* animation: var(--animation-fade-in-bloom),
+  var(--animation-slide-in-up); */
+  opacity: 0;
+  animation: var(--animation-fade-in) forwards;
+  
 }
 h1{
     font-size: var(--font-size-fluid-3);
     line-height: var(--font-lineheight-3);
     padding: var(--size-7) 0;
+    /* animation: var(--animation-fade-in-bloom) */;
 }
 h2{
     font-size: var(--font-size-fluid-2);
     line-height: var(--font-lineheight-3);
     padding: var(--size-5) 0;
+   /*  animation: var(--animation-fade-in-bloom) */;
 }
 h3{
     font-size: var(--font-size-fluid-1);
     line-height: var(--font-lineheight-3);
     padding: var(--size-5) 0;
+   /*  animation: var(--animation-fade-in-bloom) */;
 }
 p{
     font-size: var(--font-siz-fluid-0);
@@ -34,3 +42,163 @@ p{
 section{
     margin-bottom: var(--size-10)
 }
+
+.herocontainer {
+    animation:
+    var(--animation-slide-in-up);
+    animation-timing-function: var(--ease-spring-3);
+}
+
+button{
+    animation: var(--animation-pulse);
+}
+
+button:hover{
+    animation: var(--animation-shake-y);
+}
+
+.li-1{
+    opacity: 0;
+    animation: var(--animation-fade-in) forwards,
+    var(--animation-slide-in-left);
+    animation-duration: 1s;
+}
+
+.li-2{
+    opacity: 0;
+    animation: var(--animation-fade-in) forwards,
+    var(--animation-slide-in-left);
+    animation-duration:2s ;
+}
+
+.li-2{
+    opacity: 0;
+    animation: var(--animation-fade-in) forwards,
+    var(--animation-slide-in-left);
+    animation-duration: 3s;
+}
+
+.li-3{
+    opacity: 0;
+    animation: var(--animation-fade-in) forwards,
+    var(--animation-slide-in-left);
+    animation-duration: 4s;
+}
+
+.li-4{
+    opacity: 0;
+    animation: var(--animation-fade-in) forwards,
+    var(--animation-slide-in-left);
+    animation-duration: 5s;
+}
+.li-5{
+    opacity: 0;
+    animation: var(--animation-fade-in) forwards,
+    var(--animation-slide-in-left);
+    animation-duration: 6s;
+}
+
+.li-6{
+     opacity: 0;
+    animation: var(--animation-fade-in) forwards,
+    var(--animation-slide-in-left);
+    animation-duration: 7s;
+}
+
+.flicker-1{
+    animation: flicker-1 2s linear infinite both;
+}
+
+.change-color-4x1 {
+    animation: color-change-4x 6s linear infinite alternate both;
+}
+
+.jello-vertical{
+    animation: jello-vertical 0.9s both;
+}
+
+/* ---- animationer fra animista --- */
+@keyframes flicker-1 {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    41.99% {
+      opacity: 1;
+    }
+    42% {
+      opacity: 0;
+    }
+    43% {
+      opacity: 0;
+    }
+    43.01% {
+      opacity: 1;
+    }
+    47.99% {
+      opacity: 1;
+    }
+    48% {
+      opacity: 0;
+    }
+    49% {
+      opacity: 0;
+    }
+    49.01% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes color-change-4x {
+    0% {
+      background: #19dcea;
+    }
+    33.3333% {
+      background: #b22cff;
+    }
+    66.666% {
+      background: #ea2222;
+    }
+    100% {
+      background: #f5be10;
+    }
+  }
+
+  @keyframes color-change-4x1 {
+    0% {
+      background: #19dcea;
+    }
+    33.3333% {
+      background: #b22cff;
+    }
+    66.666% {
+      background: #ea2222;
+    }
+    100% {
+      background: #f5be10;
+    }
+  }
+    
+  @keyframes jello-vertical {
+    0% {
+              transform: scale3d(1, 1, 1);
+    }
+    30% {
+              transform: scale3d(0.75, 1.25, 1);
+    }
+    40% {
+              transform: scale3d(1.25, 0.75, 1);
+    }
+    50% {
+              transform: scale3d(0.85, 1.15, 1);
+    }
+    65% {
+              transform: scale3d(1.05, 0.95, 1);
+    }
+    75% {
+              transform: scale3d(0.95, 1.05, 1);
+    }
+    100% {
+              transform: scale3d(1, 1, 1);
+    }
+  }
