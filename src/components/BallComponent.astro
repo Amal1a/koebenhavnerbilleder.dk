@@ -1,0 +1,120 @@
+---
+const {ballVariant} = Astro.props;
+---
+<h3>Hej dette er en bold</h3>
+<section>
+    <div class={ballVariant}></div>
+    {ballVariant === "ball-3" &&(
+    <div class={ballVariant}></div>
+    <div class={ballVariant}></div>
+    )
+}
+</section>
+
+<style>
+*{
+    box-sizing: border-box;
+}
+
+main{
+    /* margin: 100dvh 0 0 0; */
+}
+
+section{
+    height: 100vh;
+    border: 2px solid #000;
+ /*    display: grid; */
+    align-items: center;
+    display: flex;
+    gap:1rem;
+}
+
+.ball-1,.ball-2,.ball-3,.ball-4,.ball-5{
+    height: 200px;
+    width:200px;
+    border-radius: 50%;
+    background: rgba(158, 62, 255, 0.755);
+}
+
+.ball-1
+{
+
+}
+
+.ball-2{
+   background-color: aqua; 
+}
+.ball-3{
+    background-color: blueviolet;
+}
+.ball-4{
+    background-color: blue;
+}
+
+.ball-5{
+    background-color: deeppink;
+}
+
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* gsap.to(".ball-1", {
+  scrollTrigger: ".ball-1", // start the animation when ".ball-1" enters the viewport (once)
+  x: 500
+}); */
+
+/* hjælpe med at reducere motionsickness */
+gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
+//GSAP KODE HER
+})
+
+gsap.to(".ball-1", {
+    x: 500,
+   scale:2,
+   duration: 5, /* normalt sætte man animations halløjsa først :D */
+  scrollTrigger: {
+    trigger:".ball-1",
+    start:'start center',
+    end: 'bottom center',
+  /*   scrub:true, */
+  /*   markers:true, */
+  },
+});
+
+gsap.from(".ball-2", {
+    x: 500,
+   scale:2,
+   opacity:.5,
+   ease: "elastic.out(1, 0.3)",
+   duration: 3, /* normalt sætte man animations halløjsa først :D */
+  scrollTrigger: {
+    trigger:".ball-2",
+    start:'start 50%',
+    end: 'bottom 20%',
+    toggleActions: "play none none reverse",
+   /*  markers:true, */
+  },
+});
+
+gsap.from(".ball-3", {
+    yPercent: 50,
+   opacity:0,
+   ease: "elastic.out(1, 0.3)",
+   duration: 1, /* normalt sætte man animations halløjsa først :D */
+   stagger: 0.1,
+  scrollTrigger: {
+    trigger:".ball-3",
+    start:'start 50%',
+    end: 'bottom 50%',
+    scrub:true,
+    /* toggleActions: "play none none reverse", */
+   /*  pin:true, */
+    markers:true,
+  },
+});
+
+</script>
